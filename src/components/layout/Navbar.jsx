@@ -46,7 +46,7 @@ const Navbar = () => {
             <Zap className="w-5 h-5 fill-current" />
           </div>
           <span className="text-2xl font-black tracking-tighter text-gray-900 group-hover:text-indigo-900 transition-colors">
-            NOVA<span className="text-indigo-500">MARKET</span>
+            EMATIX<span className="text-indigo-500">MARKET</span>
           </span>
         </Link>
 

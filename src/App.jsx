@@ -7,9 +7,10 @@ import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
 import Checkout from "./pages/Checkout";
 
-// --- Subpage Imports (From your specific path) ---
-// Ensure these files exist in src/subpages/ with these exact names
-import Electronics from "./subpages/electronics.jsx";
+// --- Subpage Imports ---
+import Electronics from "./subpages/electronics"; 
+import ElectronicsProductDetails from "./subpages/electronics/productdisplay"; 
+
 import FashionTrends from "./subpages/FashionTrends";
 import HomesFurniture from "./subpages/HomesFurniture";
 import TvsAppliances from "./subpages/TvsAppliances";
@@ -54,6 +55,10 @@ export default function App() {
 
             {/* Category Subpages */}
             <Route path="/electronics" element={<Electronics />} />
+            
+            {/* --- THE MISSING ROUTE --- */}
+            <Route path="/electronics/product/:id" element={<ElectronicsProductDetails />} />
+            
             <Route path="/fashion-trends" element={<FashionTrends />} />
             <Route path="/homes-furniture" element={<HomesFurniture />} />
             <Route path="/tvs-appliances" element={<TvsAppliances />} />
