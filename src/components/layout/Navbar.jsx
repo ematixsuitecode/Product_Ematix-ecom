@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link for navigation
+import { Link } from 'react-router-dom';
 import { 
   Search, ShoppingCart, User, MapPin, 
   Zap, Heart, Menu, ChevronDown 
 } from 'lucide-react';
 
-// Map display names to route paths
 const CATEGORY_LINKS = [
   { name: "Electronics", path: "/electronics" },
   { name: "Fashion & Trends", path: "/fashion-trends" },
@@ -20,7 +19,7 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 bg-white font-sans shadow-lg transition-all duration-300">
       
-      {/* 1. TOP STRIP: Utility & Announcements */}
+      {/* 1. TOP STRIP */}
       <div className="bg-gray-50 text-gray-600 text-[11px] font-medium py-1.5 px-4 flex justify-between items-center border-b border-gray-200">
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-1.5 text-indigo-700 font-bold bg-indigo-50 px-2 py-0.5 rounded-sm">
@@ -37,7 +36,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* 2. MAIN HEADER: Logo, Search, Actions */}
+      {/* 2. MAIN HEADER */}
       <div className="bg-white py-3 px-4 md:px-8 flex items-center gap-4 md:gap-8 relative">
         
         {/* Brand Logo */}
@@ -50,7 +49,7 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Location Context (Desktop Only) */}
+        {/* Location (Desktop) */}
         <div className="hidden lg:flex flex-col leading-tight cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-all duration-200 group border border-transparent hover:border-gray-100">
           <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider group-hover:text-indigo-600 transition-colors">
             Delivering to
@@ -69,14 +68,10 @@ const Navbar = () => {
               type="text" 
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
-              placeholder="Search for products, brands and more..." 
-              className="w-full border-2 border-gray-100 bg-gray-50 py-2.5 pl-5 pr-12 rounded-xl focus:outline-none focus:border-indigo-500 focus:bg-white focus:shadow-lg focus:shadow-indigo-500/10 transition-all duration-300 text-gray-700 font-medium placeholder-gray-400"
-              aria-label="Search"
+              placeholder="Search for products..." 
+              className="w-full border-2 border-gray-100 bg-gray-50 py-2.5 pl-5 pr-12 rounded-xl focus:outline-none focus:border-indigo-500 focus:bg-white focus:shadow-lg transition-all duration-300 text-gray-700 font-medium placeholder-gray-400"
             />
-            <button 
-              className="absolute right-2 top-1.5 bg-indigo-50 text-indigo-600 p-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-300 active:scale-95"
-              aria-label="Submit Search"
-            >
+            <button className="absolute right-2 top-1.5 bg-indigo-50 text-indigo-600 p-1.5 rounded-lg hover:bg-indigo-600 hover:text-white transition-all duration-300 active:scale-95">
               <Search className="w-5 h-5" />
             </button>
           </div>
@@ -85,24 +80,24 @@ const Navbar = () => {
         {/* Action Icons */}
         <div className="flex items-center gap-2 md:gap-6 text-gray-600 ml-auto md:ml-0">
           
-          {/* Profile */}
-          <Link to="/profile" className="hidden md:flex flex-col items-center gap-0.5 cursor-pointer group hover:text-indigo-600 transition-colors p-2 rounded-lg hover:bg-indigo-50">
+          {/* --- PROFILE LINK (FIXED) --- */}
+          {/* Note: Removed 'hidden' to verify visibility. If you want it hidden on mobile, add 'hidden md:flex' back, but ensure you have a mobile menu alternative. */}
+          <Link to="/profile" className="flex flex-col items-center gap-0.5 cursor-pointer group hover:text-indigo-600 transition-colors p-2 rounded-lg hover:bg-indigo-50">
             <User className="w-6 h-6 stroke-[1.5]" />
-            <span className="text-[10px] font-bold">Profile</span>
+            <span className="text-[10px] font-bold hidden md:block">Profile</span>
           </Link>
 
           {/* Wishlist */}
           <Link to="/wishlist" className="hidden md:flex flex-col items-center gap-0.5 cursor-pointer group hover:text-rose-500 transition-colors p-2 rounded-lg hover:bg-rose-50 relative">
             <Heart className="w-6 h-6 stroke-[1.5]" />
             <span className="text-[10px] font-bold">Saved</span>
-            {/* Notification Dot */}
             <span className="absolute top-2 right-2 w-2 h-2 bg-rose-500 rounded-full border-2 border-white"></span>
           </Link>
 
-          {/* Cart - High Priority */}
+          {/* Cart */}
           <Link to="/cart" className="flex flex-col items-center gap-0.5 cursor-pointer group text-gray-900 transition-colors p-2 rounded-lg hover:bg-gray-100 relative">
             <ShoppingCart className="w-6 h-6 stroke-[1.5] group-hover:fill-gray-900 transition-colors" />
-            <span className="text-[10px] font-bold">Cart</span>
+            <span className="text-[10px] font-bold hidden md:block">Cart</span>
             <span className="absolute -top-0.5 right-0.5 bg-yellow-400 text-indigo-900 text-[10px] font-extrabold w-5 h-5 flex items-center justify-center rounded-full border-2 border-white shadow-sm transform group-hover:scale-110 transition-transform">
               2
             </span>
@@ -110,19 +105,17 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* 3. SUB-NAVBAR: Categories & Departments */}
+      {/* 3. SUB-NAVBAR */}
       <div className="bg-indigo-900 text-white shadow-inner relative z-10">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-1 overflow-x-auto hide-scrollbar text-sm font-medium">
             
-            {/* 'All Product' Dropdown Trigger */}
             <Link to="/products" className="flex items-center gap-2 py-3 px-3 mr-4 cursor-pointer hover:bg-white/10 transition-colors border-r border-indigo-800 pr-6 min-w-max group text-indigo-100 hover:text-white">
                 <Menu className="w-5 h-5" />
                 <span className="font-bold tracking-wide">All Categories</span>
                 <ChevronDown className="w-3 h-3 text-indigo-300 group-hover:text-white transition-colors" />
             </Link>
 
-            {/* Middle Quick Links */}
             <div className="flex items-center gap-1">
               {CATEGORY_LINKS.map((link, index) => (
                   <Link 
@@ -135,11 +128,7 @@ const Navbar = () => {
               ))}
             </div>
 
-            {/* 'Today's Special' Highlight */}
-            <Link 
-              to="/todays-special" 
-              className="ml-auto py-3 px-4 whitespace-nowrap text-yellow-300 font-bold hover:bg-white/10 hover:text-yellow-200 transition-colors flex items-center gap-2 tracking-wide"
-            >
+            <Link to="/todays-special" className="ml-auto py-3 px-4 whitespace-nowrap text-yellow-300 font-bold hover:bg-white/10 hover:text-yellow-200 transition-colors flex items-center gap-2 tracking-wide">
                 <Zap className="w-4 h-4 fill-current animate-pulse" />
                 Today's Special
             </Link>
