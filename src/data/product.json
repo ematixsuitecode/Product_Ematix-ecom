@@ -256,5 +256,65 @@
     "reviews": 320,
     "image": "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=600&q=80",
     "tag": "Trending"
+  },
+  {
+    "id": 801,
+    "name": "USB-C Cable",
+    "category": "99store",
+    "price": 1.15,
+    "rating": 4.2,
+    "reviews": 560,
+    "image": "https://images.unsplash.com/photo-1619020942699-282494cc3868?auto=format&fit=crop&w=600&q=80",
+    "tag": "Essential"
+  },
+  {
+    "id": 802,
+    "name": "Screen Cleaning Kit",
+    "category": "99store",
+    "price": 0.99,
+    "rating": 4.5,
+    "reviews": 120,
+    "image": "https://images.unsplash.com/photo-1627883200788-b472e3407941?auto=format&fit=crop&w=600&q=80",
+    "tag": "Must Have"
+  },
+  {
+    "id": 803,
+    "name": "Wired Earphones",
+    "category": "99store",
+    "price": 1.10,
+    "rating": 3.8,
+    "reviews": 890,
+    "image": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=600&q=80",
+    "tag": "Best Value"
+  },
+  {
+    "id": 804,
+    "name": "Phone Stand",
+    "category": "99store",
+    "price": 0.85,
+    "rating": 4.6,
+    "reviews": 340,
+    "image": "https://images.unsplash.com/photo-1586775490184-b79134164193?auto=format&fit=crop&w=600&q=80",
+    "tag": "Top Pick"
+  },
+  {
+    "id": 805,
+    "name": "Cable Organizer",
+    "category": "99store",
+    "price": 0.50,
+    "rating": 4.3,
+    "reviews": 210,
+    "image": "https://images.unsplash.com/photo-1585338676239-169f44926713?auto=format&fit=crop&w=600&q=80",
+    "tag": "Useful"
+  },
+  {
+    "id": 806,
+    "name": "Microfiber Cloth (3pk)",
+    "category": "99store",
+    "price": 1.18,
+    "rating": 4.7,
+    "reviews": 450,
+    "image": "https://images.unsplash.com/photo-1584627404289-4e782d97372a?auto=format&fit=crop&w=600&q=80",
+    "tag": "Deal"
   }
 ]

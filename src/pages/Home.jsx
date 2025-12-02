@@ -3,13 +3,11 @@ import { Link } from 'react-router-dom';
 import { 
   ArrowRight, Clock, Star, Heart, 
   ShoppingCart, ChevronRight, Sparkles,
-  Zap, TrendingUp, ShieldCheck, ChevronLeft
+  Zap, TrendingUp, ShieldCheck, ChevronLeft, Gift, Ticket
 } from 'lucide-react';
 
-// --- IMPORT MOCK DATABASE ---
 import allProducts from '../data/product.json';
 
-// --- UI CONFIGURATION (Banners & Navigation) ---
 const QUICK_LINKS = [
   { id: 1, name: "Top Offers", path: "/todays-special", img: "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?auto=format&fit=crop&w=150&q=80", color: "bg-indigo-50 border-indigo-100" },
   { id: 2, name: "Mobiles", path: "/electronics", img: "https://images.unsplash.com/photo-1598327105666-5b89351aff70?auto=format&fit=crop&w=150&q=80", color: "bg-blue-50 border-blue-100" },
@@ -55,6 +53,62 @@ const SLIDES = [
 
 // --- SUB-COMPONENTS ---
 
+const EngagementBanner = () => {
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <div className="flex items-center justify-center gap-8 sm:gap-16 md:gap-24 overflow-x-auto hide-scrollbar py-2">
+        
+        {/* 99 Store Bubble */}
+        <Link to="/99store" className="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+          <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-b from-yellow-300 to-yellow-500 border-4 border-white shadow-lg flex items-center justify-center transform transition-transform duration-300 group-hover:-translate-y-2 group-hover:shadow-xl ring-2 ring-yellow-100">
+             <div className="absolute inset-1 rounded-full border border-yellow-200/50"></div>
+             <div className="text-center leading-none">
+                <span className="block text-xs font-bold text-yellow-800 uppercase tracking-tighter">Under</span>
+                <span className="block text-3xl md:text-4xl font-black text-red-600 drop-shadow-sm">99</span>
+             </div>
+             <div className="absolute top-2 right-4 w-3 h-3 bg-white/40 rounded-full blur-[1px]"></div>
+          </div>
+          <span className="text-sm font-bold text-gray-800 bg-white border border-gray-100 px-3 py-1 rounded-full shadow-sm group-hover:text-yellow-600 transition-colors">
+            99 Store
+          </span>
+        </Link>
+
+        {/* Spinning Luck Draw Bubble */}
+        <Link to="/todays-special" className="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+          <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full border-4 border-white shadow-lg flex items-center justify-center overflow-hidden transform transition-transform duration-300 group-hover:-translate-y-2 group-hover:shadow-xl ring-2 ring-purple-100">
+             
+             {/* Spinning Background */}
+             <div className="absolute inset-0 w-full h-full bg-[conic-gradient(at_center,_var(--tw-gradient-stops))] from-red-500 via-yellow-500 via-green-500 via-blue-500 to-red-500 animate-[spin_4s_linear_infinite]"></div>
+             
+             {/* Center Static Content */}
+             <div className="absolute inset-1 bg-white/10 rounded-full"></div>
+             <div className="relative z-10 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-inner">
+                <Gift className="w-7 h-7 text-purple-600 animate-pulse" />
+             </div>
+             
+             {/* Ticker Marker */}
+             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[10px] border-t-gray-800 z-20"></div>
+          </div>
+          <span className="text-sm font-bold text-gray-800 bg-white border border-gray-100 px-3 py-1 rounded-full shadow-sm group-hover:text-purple-600 transition-colors">
+            Luck Draw
+          </span>
+        </Link>
+
+        {/* Flash Coupons */}
+        <Link to="/todays-special" className="flex flex-col items-center gap-2 cursor-pointer group min-w-[80px]">
+          <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-tr from-blue-400 to-indigo-600 border-4 border-white shadow-lg flex items-center justify-center transform transition-transform duration-300 group-hover:-translate-y-2 group-hover:shadow-xl ring-2 ring-blue-100">
+             <Ticket className="w-10 h-10 text-white rotate-12 group-hover:rotate-0 transition-transform" />
+          </div>
+          <span className="text-sm font-bold text-gray-800 bg-white border border-gray-100 px-3 py-1 rounded-full shadow-sm group-hover:text-blue-600 transition-colors">
+            Coupons
+          </span>
+        </Link>
+
+      </div>
+    </div>
+  );
+};
+
 const QuickLinkRail = () => (
   <section className="bg-white border-b border-gray-100 py-4">
     <div className="container mx-auto px-4">
@@ -81,18 +135,11 @@ const QuickLinkRail = () => (
 const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
 
-  const nextSlide = () => {
-    setCurrent((prev) => (prev === SLIDES.length - 1 ? 0 : prev + 1));
-  };
-
-  const prevSlide = () => {
-    setCurrent((prev) => (prev === 0 ? SLIDES.length - 1 : prev - 1));
-  };
+  const nextSlide = () => setCurrent((prev) => (prev === SLIDES.length - 1 ? 0 : prev + 1));
+  const prevSlide = () => setCurrent((prev) => (prev === 0 ? SLIDES.length - 1 : prev - 1));
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      nextSlide();
-    }, 5000);
+    const timer = setInterval(() => nextSlide(), 5000);
     return () => clearInterval(timer);
   }, []);
 
@@ -133,12 +180,8 @@ const HeroSlider = () => {
         ))}
       </div>
 
-      <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/30 hover:bg-white text-white hover:text-gray-900 p-2 rounded-full backdrop-blur-sm transition-all shadow-lg border border-white/20">
-        <ChevronLeft className="w-6 h-6" />
-      </button>
-      <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/30 hover:bg-white text-white hover:text-gray-900 p-2 rounded-full backdrop-blur-sm transition-all shadow-lg border border-white/20">
-        <ChevronRight className="w-6 h-6" />
-      </button>
+      <button onClick={prevSlide} className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/30 hover:bg-white text-white hover:text-gray-900 p-2 rounded-full backdrop-blur-sm transition-all shadow-lg border border-white/20"><ChevronLeft className="w-6 h-6" /></button>
+      <button onClick={nextSlide} className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/30 hover:bg-white text-white hover:text-gray-900 p-2 rounded-full backdrop-blur-sm transition-all shadow-lg border border-white/20"><ChevronRight className="w-6 h-6" /></button>
 
       <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-30">
         {SLIDES.map((_, idx) => (
@@ -154,11 +197,10 @@ const HeroSlider = () => {
 };
 
 const DealZone = () => {
-  // Use products from JSON priced under 150
-  const dealProducts = allProducts.filter(p => p.price < 150).slice(0, 5);
+  const dealProducts = (allProducts || []).filter(p => p.price < 150).slice(0, 5);
 
   return (
-    <section className="relative z-20 mt-8 mb-12">
+    <section className="relative z-20 mt-2 mb-12">
       <div className="container mx-auto px-4">
         <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 md:p-8 grid grid-cols-1 lg:grid-cols-4 gap-8 items-center">
           
@@ -287,7 +329,7 @@ const BentoGrid = () => (
 
 const RecommendedProducts = () => {
   // Use products from JSON that are tagged as "Best Seller" or "Trending"
-  const recommended = allProducts.filter(p => p.tag === "Best Seller" || p.tag === "Trending").slice(0, 8);
+  const recommended = (allProducts || []).filter(p => p.tag === "Best Seller" || p.tag === "Trending").slice(0, 8);
 
   return (
     <section className="bg-gray-50 py-16 border-t border-gray-200">
@@ -394,6 +436,8 @@ const Home = () => {
     <div className="font-sans bg-white min-h-screen text-gray-800 pb-8">
       <QuickLinkRail />
       <HeroSlider />
+      {/* Added the new gamified section here */}
+      <EngagementBanner /> 
       <DealZone />
       <BentoGrid />
       <RecommendedProducts />

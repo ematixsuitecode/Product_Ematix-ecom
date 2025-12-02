@@ -27,14 +27,14 @@ const Navbar = () => {
             <Zap className="w-3 h-3 fill-current" /> Brand Week
           </span>
           <span className="hidden lg:inline text-gray-500">
-            Get extra 10% off on HDFC Cards • Ends in 12h 45m
+            Get extra 10% off on HDFC Cards • Ends in 12h 15m
           </span>
         </div>
         <div className="flex gap-5">
-          <Link to="/sell" className="hover:text-indigo-600 transition-colors duration-200">Sell</Link>
-          <Link to="/app" className="hover:text-indigo-600 transition-colors duration-200">Download App</Link>
-          <Link to="/help" className="hover:text-indigo-600 transition-colors duration-200">Help Center</Link>
-        </div>
+         <Link to="/sell" className="hover:text-indigo-600 transition-colors duration-200">Sell</Link>
+         <Link to="/app" className="hover:text-indigo-600 transition-colors duration-200">Download App</Link>
+         <Link to="/Help" className="hover:text-indigo-600 transition-colors duration-200">Help Center</Link> {/* UPDATED */}
+       </div>
       </div>
 
       {/* 2. MAIN HEADER */}
@@ -210,7 +210,7 @@ const Navbar = () => {
               <div className="px-4 py-2">
                 <h4 className="font-bold text-gray-900 mb-2">Help & Settings</h4>
                 <div className="space-y-1">
-                  <Link to="/help" className="block py-2 text-gray-600 hover:text-indigo-600 hover:bg-gray-50 px-2 rounded-md" onClick={() => setIsMobileMenuOpen(false)}>Customer Service</Link>
+                  <Link to="/Help" className="block py-2 text-gray-600 hover:text-indigo-600 hover:bg-gray-50 px-2 rounded-md" onClick={() => setIsMobileMenuOpen(false)}>Customer Service</Link>
                   <Link to="/sell" className="block py-2 text-gray-600 hover:text-indigo-600 hover:bg-gray-50 px-2 rounded-md" onClick={() => setIsMobileMenuOpen(false)}>Sell on NovaMarket</Link>
                 </div>
               </div>

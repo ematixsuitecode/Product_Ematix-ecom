@@ -6,7 +6,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
 import Checkout from "./pages/Checkout";
-import Profile from "./pages/profile";
+import Help from "./pages/Help";
 
 // --- Subpage Imports ---
 import Electronics from "./subpages/electronics"; 
@@ -16,9 +16,10 @@ import HomesFurniture from "./subpages/HomesFurniture";
 import TvsAppliances from "./subpages/TvsAppliances";
 import Grocery from "./subpages/Grocery";
 import TodaysSpecial from "./subpages/TodaysSpecial";
+import Store99 from "./subpages/Store99"; // New Import
 
 // --- Profile Imports ---
-
+import Profile from "./pages/Profile";
 import Addresses from "./pages/profile/Addresses";
 import Orders from "./pages/profile/Orders";
 
@@ -56,6 +57,7 @@ export default function App() {
             <Route path="/tvs-appliances" element={<TvsAppliances />} />
             <Route path="/grocery" element={<Grocery />} />
             <Route path="/todays-special" element={<TodaysSpecial />} />
+            <Route path="/99store" element={<Store99 />} /> {/* New Route */}
 
             {/* Profile Section */}
             <Route path="/profile" element={<Profile />} />

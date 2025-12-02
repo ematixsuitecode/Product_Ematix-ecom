@@ -23,6 +23,15 @@ const Wishlist = () => {
     setWishlistItems(wishlistItems.filter(item => item.id !== id));
   };
 
+  // Helper to determine the correct link path based on category
+  const getProductLink = (item) => {
+    if (item.category === 'electronics') {
+        return `/electronics/product/${item.id}`;
+    }
+    // Fallback for other categories (you can add more conditions here as you build other PDPs)
+    return `/products/${item.id}`; 
+  };
+
   if (wishlistItems.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4 text-center">
@@ -55,14 +64,14 @@ const Wishlist = () => {
                 <Trash2 className="w-4 h-4" />
               </button>
 
-              <Link to={`/products/${item.id}`} className="block relative aspect-square mb-4 overflow-hidden rounded-lg bg-gray-50 p-4">
+              <Link to={getProductLink(item)} className="block relative aspect-square mb-4 overflow-hidden rounded-lg bg-gray-50 p-4">
                  <img src={item.image} alt={item.name} className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform" />
               </Link>
 
               <div className="flex-1 flex flex-col">
                 <div className="mb-1">
                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">{item.brand}</span>
-                   <Link to={`/products/${item.id}`} className="block text-sm font-bold text-gray-900 leading-snug hover:text-blue-600 transition line-clamp-2 mb-1">
+                   <Link to={getProductLink(item)} className="block text-sm font-bold text-gray-900 leading-snug hover:text-blue-600 transition line-clamp-2 mb-1">
                       {item.name}
                    </Link>
                 </div>
