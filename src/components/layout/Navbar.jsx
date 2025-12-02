@@ -210,7 +210,7 @@ const Navbar = () => {
               <div className="px-4 py-2">
                 <h4 className="font-bold text-gray-900 mb-2">Help & Settings</h4>
                 <div className="space-y-1">
-                  <Link to="/Help" className="block py-2 text-gray-600 hover:text-indigo-600 hover:bg-gray-50 px-2 rounded-md" onClick={() => setIsMobileMenuOpen(false)}>Customer Service</Link>
+                  <Link to="/help" className="block py-2 text-gray-600 hover:text-indigo-600 hover:bg-gray-50 px-2 rounded-md" onClick={() => setIsMobileMenuOpen(false)}>Customer Service</Link>
                   <Link to="/sell" className="block py-2 text-gray-600 hover:text-indigo-600 hover:bg-gray-50 px-2 rounded-md" onClick={() => setIsMobileMenuOpen(false)}>Sell on NovaMarket</Link>
                 </div>
               </div>
